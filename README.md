@@ -1,4 +1,5 @@
 Documentație Proiect Cloud
+
 I.	Introducere. Noțiuni teoretice despre RESTful API 
 
 Un API RESTful este o interfață de program de aplicație (API) care folosește solicitări HTTP pentru următoarele operații cu diferite date: GET, PUT, POST și DELETE.
