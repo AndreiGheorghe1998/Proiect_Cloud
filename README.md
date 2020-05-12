@@ -34,7 +34,7 @@ De asemenea, un alt exemplu poate fi accesarea http://18.191.231.75.xip.io:8080/
             
 V.          Capturi de ecran.
 
-![GitHub Logo](map2.JPG)
+![alt text](https://github.com/AndreiGheorghe1998/Proiect_Cloud/blob/master/Map2.PNG)
 Fig 5. Captură de ecran cu opțiunea de View din Google Maps implementată pe pagina web. În captura de ecran fiind Parcul Cișmigiu.
 
 
