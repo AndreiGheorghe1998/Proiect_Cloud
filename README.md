@@ -32,8 +32,13 @@ IV.	Flux de date.
 De asemenea, un alt exemplu poate fi accesarea http://18.191.231.75.xip.io:8080/, răspunsul fiind accesarea paginii web.
 2.	Dintre metodele HTTP am folosit get. Metoda get folosită are un endpoint /proiect care dacă va fi găsit va afișa {"proiect":"cloud"}. 
             
+V.          Capturi de ecran.
 
-V.	Referințe.
+![GitHub Logo](map2.JPG)
+Fig 5. Captură de ecran cu opțiunea de View din Google Maps implementată pe pagina web. În captura de ecran fiind Parcul Cișmigiu.
+
+
+VI.	Referințe.
 
 https://developers.google.com/places/web-service/search
 
