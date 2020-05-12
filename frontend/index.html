@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Proiect Cloud Computing</title>
+    <style>
+    
+   
+      
+      #map {
+        height: 50%;
+      }
+  
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      #target {
+        width: 200px;
+      }
+    
+ 
+  </style>
+
+</head>
+
+ <head>
+    <meta name="google-signin-client_id" content="375216409813-r22ec2obni5i4umkve8b7ubr4qf889fh.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </head>
+  <body>  
+    <h><b>Login with your Gmail account below!</h></b>
+  
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <p></p>
+    <button href="#" onclick="signOut();">SignOut!</button>
+    <script>
+      function onSignIn(googleUser) {
+       
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); 
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+       
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      }
+      
+   function signOut() {
+   
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+    </script>
+  </body>
+
+
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqDHfBIMaSn031ENuGAhxDi_FzX7ReKMo&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqDHfBIMaSn031ENuGAhxDi_FzX7ReKMo&libraries=places&callback=initAutocomplete"
+         async defer></script>
+</head>
+<body>
+<p></p>
+
+<h><b>Calculate latitude and longitude for a given location:</h></b>
+<div class="form-group">
+    <label>Location:</label>
+    <input type="text" class="form-control" id="search_input" placeholder="Type address..." />
+    <input type="hidden" id="loc_lat" />
+    <input type="hidden" id="loc_long" />
+</div>
+
+
+<div class="latlong-view">
+    <p><b>Latitude:</b> <span id="latitude_view"></span></p>
+    <p><b>Longitude:</b> <span id="longitude_view"></span></p>
+</div>
+
+<p></p>
+<h><b>Browse Google Maps to find your desired location below:</b></h>
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map"></div>
+<script>
+  
+  var searchInput = 'search_input';
+
+$(document).ready(function () {
+    var autocomplete;
+    autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+        types: ['geocode'],
+    });
+	
+    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+        var near_place = autocomplete.getPlace();
+        document.getElementById('loc_lat').value = near_place.geometry.location.lat();
+        document.getElementById('loc_long').value = near_place.geometry.location.lng();
+		
+        document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
+        document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();
+    });
+});
+
+$(document).on('change', '#'+searchInput, function () {
+    document.getElementById('latitude_input').value = '';
+    document.getElementById('longitude_input').value = '';
+	
+    document.getElementById('latitude_view').innerHTML = '';
+    document.getElementById('longitude_view').innerHTML = '';
+});
+
+ function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 44.439663, lng: 26.096306},
+          zoom: 13,
+          mapTypeId: 'roadmap'
+        });
+
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        map.addListener('bounds_changed', function() {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+       
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          }
+
+          markers.forEach(function(marker) {
+            marker.setMap(null);
+          });
+          markers = [];
+
+    
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) {
+            if (!place.geometry) {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            var icon = {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+    
+            markers.push(new google.maps.Marker({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) {
+           
+              bounds.union(place.geometry.viewport);
+            } else {
+              bounds.extend(place.geometry.location);
+            }
+          });
+          map.fitBounds(bounds);
+        });
+      }
+
+
+</script>
+  
+</body>
+   
+
+
+
+
+
+</html>
