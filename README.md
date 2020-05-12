@@ -34,6 +34,23 @@ De asemenea, un alt exemplu poate fi accesarea http://18.191.231.75.xip.io:8080/
             
 V.          Capturi de ecran.
 
+
+![alt text](https://github.com/AndreiGheorghe1998/Proiect_Cloud/blob/master/Project.PNG)
+Fig 1. Captură de ecran cu pagina web.
+
+
+![alt text](https://github.com/AndreiGheorghe1998/Proiect_Cloud/blob/master/SignIn.PNG)
+Fig 2. Captură de ecran cu buton de Sign-In prin intermediul Google, precum și opțiunea de SignOut.
+
+
+![alt text](https://github.com/AndreiGheorghe1998/Proiect_Cloud/blob/master/LnTLnG.PNG)
+Fig 3. Captură de ecran pentru aflarea latitudinii și longitudinii pentru statul american Ohio.
+
+
+![alt text](https://github.com/AndreiGheorghe1998/Proiect_Cloud/blob/master/Map.PNG)
+Fig 4. Captură de ecran cu harta, locația prestabilită fiind orașul București.
+
+
 ![alt text](https://github.com/AndreiGheorghe1998/Proiect_Cloud/blob/master/Map2.PNG)
 Fig 5. Captură de ecran cu opțiunea de View din Google Maps implementată pe pagina web. În captura de ecran fiind Parcul Cișmigiu.
 
