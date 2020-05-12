@@ -45,9 +45,14 @@ Fig 1. Captură de ecran cu pagina web.
 
 
 
+
+
 ![alt text](https://github.com/AndreiGheorghe1998/Proiect_Cloud/blob/master/SignIn.PNG)
 
 Fig 2. Captură de ecran cu buton de Sign-In prin intermediul Google, precum și opțiunea de SignOut.
+
+
+
 
 
 ![alt text](https://github.com/AndreiGheorghe1998/Proiect_Cloud/blob/master/LnTLnG.PNG)
@@ -56,9 +61,12 @@ Fig 3. Captură de ecran pentru aflarea latitudinii și longitudinii pentru stat
 
 
 
+
+
 ![alt text](https://github.com/AndreiGheorghe1998/Proiect_Cloud/blob/master/Map.PNG)
 
 Fig 4. Captură de ecran cu harta, locația prestabilită fiind orașul București.
+
 
 
 
